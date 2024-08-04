@@ -1,5 +1,6 @@
 import './style.css'
-import './clean-code/07-homework'
+// import './solid/03-liskov-sustitution-a'
+import './solid/05-dependency-inversion-a'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 

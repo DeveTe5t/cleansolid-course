@@ -12,20 +12,16 @@
         ) { }
     }
 
-    class InputAttributes extends HtmlElement {
+    class InputAttributes {
         constructor(
             public value: string,
             public placeholder: string,
-            id: string,
-        ) {
-            super(id, 'input');
-        }
+        ) { }
     }
 
-    class InputEvents extends InputAttributes {
-        constructor(value: string, placeholder: string, id: string) {
-            super(value, placeholder, id);
-        }
+    class InputEvents {
+
+        constructor() { }
 
         setFocus() { };
         getValue() { };
@@ -36,7 +32,50 @@
 
     //? Idea para la nueva clase InputElement
 
-    const nameField = new InputEvents('Fernando', 'Enter first name', 'txtName');
+    // my way
+    // interface InputElementProperties {
+    //     id: string;
+    //     placeholder: string;
+    //     value: string;
+    // }
+
+    // class InputElement {
+
+    //     public htmlElement: HtmlElement;
+    //     public inputAttributes: InputAttributes;
+    //     public inputEvents: InputEvents;
+
+    //     constructor({
+    //         id, value, placeholder,
+    //     }: InputElementProperties) {
+    //         this.htmlElement = new HtmlElement(id, 'input');
+    //         this.inputAttributes = new InputAttributes(value, placeholder);
+    //         this.inputEvents = new InputEvents();
+    //     }
+    // }
+
+    // other way
+    class InputElement {
+
+        public htmlElement: HtmlElement;
+        public inputAttributes: InputAttributes;
+        public inputEvents: InputEvents;
+
+        constructor(value: string, placeholder: string, id: string) {
+            this.htmlElement = new HtmlElement(id, 'input');
+            this.inputAttributes = new InputAttributes(value, placeholder);
+            this.inputEvents = new InputEvents();
+        }
+    }
+
+    // const nameField = new InputEvents(
+    // 'Fernando', 'Enter first name', 'txtName'
+    // );
+    // const nameField = new InputElement({ value: 'Fernando', 
+    // placeholder: 'Enter first name', id: 'txtName' });
+    const nameField = new InputElement(
+        'Fernando', 'Enter first name', 'txtName'
+    );
 
     console.log({ nameField });
 
